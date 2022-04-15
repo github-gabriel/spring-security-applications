@@ -12,7 +12,7 @@ public class HomeResource {
     }
 
     @GetMapping("/user")
-    public String lehrer(){
+    public String user(){
         return ("<h1>Hier wird das Formular einsehbar sein</h1>");
     }
 
