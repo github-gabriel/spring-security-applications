@@ -1,6 +1,6 @@
 # Spring Security Applications
 
-Das sind meine ersten Spring Security Applications, welche ich nach einem Tutorial von (Javabrains)[https://www.youtube.com/watch?v=sm-8qfMWEV8&list=PLqq-6Pq4lTTYTEooakHchTGglSvkZAjnE&index=2]
+Das sind meine ersten Spring Security Applications, welche ich nach einem Tutorial von [Javabrains](https://www.youtube.com/watch?v=sm-8qfMWEV8&list=PLqq-6Pq4lTTYTEooakHchTGglSvkZAjnE&index=2)
 gemacht habe. Das ist die "Vorbereitung" auf ein größeres Projekt, was ich vorhabe, also wundert euch nicht über die manche
 Beschriftungen in dem @RestController/dem API Layer. 
 Hier noch einmal eine kleine Erklärung zu jeder Applikation:
@@ -23,3 +23,8 @@ ist https://jwt.io/. Auf jeden Fall lässt diese Applikation einfache GET Reques
 über eine POST Request autorisiert hat und den JWT aus der Antwort in die GET Request kopiert hat, wird diese GET Request(mit einem
 validen JWT) zugelassen und der Inhalt wird wie erwartet zurückgegeben. Um zu überprüfen, dass dahinter keine Session IDs stecken
 kann man den JWT auch wieder aus dem Header nehmen -> Die GET Request failed wieder.
+## Spring Security LDAP
+In diesem Projekt verbindet sich Spring zu einem internen LDAP Server der durch [diese Datei](https://github.com/gabriel-java-github/spring-security-applications/blob/main/Spring%20Security%20LDAP/src/main/resources/ldap-data.ldif
+) initialisiert wird. LDAP ist ein Protokoll, welches es ermöglicht mit einer bestimmten Syntax Informationen aus einem LDAP Verzeichnis abzufragen, welche in diesem Fall Userinfos sind, damit man sich einloggen kann.
+## Spring Security OAuth
+Auch wenn diese Applikation leicht aussehen mag, sind OAuth Flows relativ komplex. Doch zum Glück bieten Spring Boot und OAuth einfache Implementationen an. In diesem Fall nutze ich OAuth nicht 100% wie gedacht(nämlich für Authorisation zwischen Applikationen), sondern um einen User zu verifizieren, d.h. ich spreche (in diesem Fall GitHub) an, und frage ob dem Dienst(/GitHub) dieser User bekannt ist, wofür ich die Zustimmung des Users brauche, daher taucht ein "Authorize" Button auf, den der User drücken muss. Authorisiert der User diesen Vorgang nun, sagt meine Applikation: "Gut, bei dir(GitHub) existiert dieser User, also kopiere ich seine Daten von dir zu mir und "simuliere" ihn jetzt als eingeloggten User, da er ja bei dir existiert".
